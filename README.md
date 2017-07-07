@@ -199,7 +199,7 @@ This is a useful way of telling TypeScript what the real type of an expression i
 
 The reason we need to do so in this case is that `getElementById`'s return type is `HTMLElement | null`.
 Put simply, `getElementById` returns `null` when it can't find an element with a given `id`.
-We're assuming that `getElementById` will actually succeed, so we need convince TypeScript of that using the `as` syntax.
+We're assuming that `getElementById` will actually succeed, so we need to convince TypeScript of that using the `as` syntax.
 
 TypeScript also has a trailing "bang" syntax (`!`), which removes `null` and `undefined` from the prior expression.
 So we *could* have written `document.getElementById('root')!`, but in this case we wanted to be a bit more explicit.
@@ -319,7 +319,7 @@ Because React on its own does not provide built-in support for state management,
 State is updated in an immutable fashion by sending explicit action messages which must be handled by functions called reducers.
 Because of the explicit nature, it is often easier to reason about how an action will affect the state of your program.
 
-[MobX](https://mobx.js.org/) relies on functional reactive patterns where state is wrapped through observables and and passed through as props.
+[MobX](https://mobx.js.org/) relies on functional reactive patterns where state is wrapped through observables and then passed through as props.
 Keeping state fully synchronized for any observers is done by simply marking state as observable.
 As a nice bonus, the library is already written in TypeScript.
 
@@ -448,7 +448,7 @@ It's important that the `enthusiasmLevel` property come last, since otherwise it
 
 You may want to write a few tests for your reducer.
 Since reducers are pure functions, they can be passed arbitrary data.
-For every input, reducers can tested by checking their newly produced state.
+For every input, reducers can be tested by checking their newly produced state.
 Consider looking into Jest's [toEqual](https://facebook.github.io/jest/docs/expect.html#toequalvalue) method to accomplish this.
 
 ## Making a container
@@ -509,7 +509,7 @@ The real two key pieces here are the original `Hello` component as well as the `
 `connect` will be able to actually take our original `Hello` component and turn it into a container using two functions:
 
 * `mapStateToProps` which massages the data from the current store to part of the shape that our component needs.
-* `mapDispatchToProps` which uses creates callback props to pump actions to our store using a given `dispatch` function.
+* `mapDispatchToProps` which creates callback props to pump actions to our store using a given `dispatch` function.
 
 If we recall, our application state consists of two properties: `languageName` and `enthusiasmLevel`.
 Our `Hello` component, on the other hand, expected a `name` and an `enthusiasmLevel`.
